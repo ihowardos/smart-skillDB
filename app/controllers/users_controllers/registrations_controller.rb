@@ -38,14 +38,12 @@ class UsersControllers::RegistrationsController < Devise::RegistrationsControlle
 
   protected
 
-  @attributes = [:name, :surname, :date_of_birth, :photo, :tel]
-
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: @attributes)
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :surname, :date_of_birth, :photo, :tel])
   end
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: @attributes)
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :surname, :date_of_birth, :photo, :tel])
   end
 
   # The path used after sign up.
