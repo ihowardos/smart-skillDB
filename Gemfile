@@ -15,7 +15,6 @@ gem 'decent_decoration', '~> 0.1.0'
 gem 'draper', "~> 3.0"
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'sass-rails', '>= 3.2'
 
 
 group :development, :test do
