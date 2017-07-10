@@ -9,6 +9,14 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem "slim-rails"
+gem 'decent_exposure', '3.0.0'
+gem 'decent_decoration', '~> 0.1.0'
+gem 'draper', "~> 3.0"
+gem 'simple_form'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'sass-rails', '>= 3.2'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri
