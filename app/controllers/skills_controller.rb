@@ -1,4 +1,4 @@
-class SkillsController < ApplicationController
+  class SkillsController < ApplicationController
   
 
   expose_decorated :skill
@@ -50,7 +50,7 @@ class SkillsController < ApplicationController
   
     def fetch_skills
       skills = Skill.all
-      skills = skills.where("title ILIKE ?", "%#{params[:search]}%") if params[:search]
+      skills = skills.where("name ILIKE ?", "%#{params[:search]}%") if params[:search]
       skills
     end
 
