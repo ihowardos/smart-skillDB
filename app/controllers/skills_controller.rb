@@ -1,38 +1,23 @@
 class SkillsController < ApplicationController
-  before_action :set_skill, only: [:show, :edit, :update, :destroy]
+  
 
-  # GET /skills
-  # GET /skills.json
-  def index
-    @skills = Skill.all
-  end
+  expose_decorated :skill
+  expose_decorated :skills, -> { fetch_skills }
 
-  # GET /skills/1
-  # GET /skills/1.json
-  def show
-  end
 
-  # GET /skills/new
-  def new
-    @skill = Skill.new
-  end
-
-  # GET /skills/1/edit
-  def edit
-  end
 
   # POST /skills
   # POST /skills.json
   def create
-    @skill = Skill.new(skill_params)
+    skill = Skill.new(skill_params)
 
     respond_to do |format|
-      if @skill.save
-        format.html { redirect_to @skill, notice: 'Skill was successfully created.' }
-        format.json { render :show, status: :created, location: @skill }
+      if skill.save
+        format.html { redirect_to skill, notice: 'Skill was successfully created.' }
+        format.json { render :show, status: :created, location: skill }
       else
         format.html { render :new }
-        format.json { render json: @skill.errors, status: :unprocessable_entity }
+        format.json { render json: skill.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,12 +26,12 @@ class SkillsController < ApplicationController
   # PATCH/PUT /skills/1.json
   def update
     respond_to do |format|
-      if @skill.update(skill_params)
-        format.html { redirect_to @skill, notice: 'Skill was successfully updated.' }
-        format.json { render :show, status: :ok, location: @skill }
+      if skill.update(skill_params)
+        format.html { redirect_to skill, notice: 'Skill was successfully updated.' }
+        format.json { render :show, status: :ok, location: skill }
       else
         format.html { render :edit }
-        format.json { render json: @skill.errors, status: :unprocessable_entity }
+        format.json { render json: skill.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +39,7 @@ class SkillsController < ApplicationController
   # DELETE /skills/1
   # DELETE /skills/1.json
   def destroy
-    @skill.destroy
+    skill.destroy
     respond_to do |format|
       format.html { redirect_to skills_url, notice: 'Skill was successfully destroyed.' }
       format.json { head :no_content }
@@ -62,9 +47,11 @@ class SkillsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_skill
-      @skill = Skill.find(params[:id])
+  
+    def fetch_skills
+      skills = Skill.all
+      skills = skills.where("title ILIKE ?", "%#{params[:search]}%") if params[:search]
+      skills
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
