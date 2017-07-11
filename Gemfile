@@ -9,16 +9,25 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-gem "slim-rails"
+gem 'slim-rails'
 gem 'decent_exposure', '3.0.0'
+gem 'draper'
 gem 'decent_decoration', '~> 0.1.0'
-gem 'draper', "~> 3.0"
+gem 'devise'
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.3.6'
 
-
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem "capybara"
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'faker'
+  gem 'pry-rails'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+  gem "capybara-screenshot"
+  gem "launchy"
 end
 
 group :development do
