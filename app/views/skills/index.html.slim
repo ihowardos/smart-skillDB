@@ -1,0 +1,25 @@
+= form_tag skills_path, method: :get
+  = text_field_tag :search, params[:search], placeholder: "Search"
+h1 Listing skills
+
+table
+  thead
+    tr
+      th Name
+      th Level
+      th
+      th
+      th
+
+  tbody
+    - skills.each do |skill|
+      tr
+        td = skill.name
+        td = skill.level
+        td = link_to 'Show', skill
+        td = link_to 'Edit', edit_skill_path(skill)
+        td = link_to 'Destroy', skill, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Skill', new_skill_path
