@@ -29,6 +29,9 @@
           = f.input :tel, as: :string, input_html: { class:"form-control" }, label: "Telephone"
 
         .field
+          = f.input :role, as: :select, input_html: {class:"form-control"}, collection: User.roles.keys, selected: @user.role
+
+        .field
           = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false, input_html: {class:"form-control"}
 
         .field
