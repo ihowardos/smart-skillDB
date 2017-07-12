@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  has_many :userskills
-  has_many :skills, :through => :userskills
+  has_many :users_skills
+  has_many :skills, :through => :users_skills
 
   def get_username
     "#{name} #{surname}"
