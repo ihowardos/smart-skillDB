@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20170710165816) do
 
   create_table "skills", force: :cascade do |t|
     t.string   "name"
-    t.integer  "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,6 +46,7 @@ ActiveRecord::Schema.define(version: 20170710165816) do
   create_table "users_skills", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "skill_id"
+    t.integer  "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
