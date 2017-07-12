@@ -7,6 +7,14 @@ class User < ApplicationRecord
   has_many :users_skills
   has_many :skills, :through => :users_skills
 
+  validates :role, inclusion: {in: :role}
+
+  enum role: {
+    user: 'user',
+    teacher: 'teacher',
+    deanery: 'deanery'
+  }
+
   def get_username
     "#{name} #{surname}"
   end

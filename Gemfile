@@ -16,6 +16,7 @@ gem 'decent_decoration', '~> 0.1.0'
 gem 'devise'
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'pundit'
 
 group :development, :test do
   gem 'byebug', platform: :mri
