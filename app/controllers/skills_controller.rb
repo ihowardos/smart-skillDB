@@ -1,62 +1,46 @@
   class SkillsController < ApplicationController
-  
 
   expose_decorated :skill
   expose_decorated :skills, -> { fetch_skills }
 
+<<<<<<< HEAD
   expose :users_skill, -> { UsersSkill.new }
 
 
 
   # POST /skills
   # POST /skills.json
+=======
+>>>>>>> a3e6186b9d7265d0d1dfe8bb5e8409f5f6ee21e5
   def create
-    skill = Skill.new(skill_params)
-
-    respond_to do |format|
-      if skill.save
-        format.html { redirect_to skill, notice: 'Skill was successfully created.' }
-        format.json { render :show, status: :created, location: skill }
-      else
-        format.html { render :new }
-        format.json { render json: skill.errors, status: :unprocessable_entity }
-      end
+    if skill.save
+      redirect_to skill, notice: 'Skill was successfully created.'
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /skills/1
-  # PATCH/PUT /skills/1.json
   def update
-    respond_to do |format|
-      if skill.update(skill_params)
-        format.html { redirect_to skill, notice: 'Skill was successfully updated.' }
-        format.json { render :show, status: :ok, location: skill }
-      else
-        format.html { render :edit }
-        format.json { render json: skill.errors, status: :unprocessable_entity }
-      end
+    if skill.update(skill_params)
+      redirect_to skill, notice: 'Skill was successfully updated.'
+    else
+      render :edit
     end
   end
 
-  # DELETE /skills/1
-  # DELETE /skills/1.json
   def destroy
     skill.destroy
-    respond_to do |format|
-      format.html { redirect_to skills_url, notice: 'Skill was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to skills_url, notice: 'Skill was successfully destroyed.'
   end
 
   private
-  
+
     def fetch_skills
       skills = Skill.all
       skills = skills.where("name ILIKE ?", "%#{params[:search]}%") if params[:search]
       skills
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def skill_params
       params.require(:skill).permit(:name)
     end
