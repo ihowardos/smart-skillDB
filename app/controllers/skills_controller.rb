@@ -3,6 +3,14 @@
   expose_decorated :skill
   expose_decorated :skills, -> { fetch_skills }
 
+
+  expose :users_skill, -> { UsersSkill.new }
+
+
+
+  # POST /skills
+  # POST /skills.json
+
   def create
     if skill.save
       redirect_to skill, notice: 'Skill was successfully created.'
@@ -33,6 +41,6 @@
     end
 
     def skill_params
-      params.require(:skill).permit(:name, :level)
+      params.require(:skill).permit(:name)
     end
 end
