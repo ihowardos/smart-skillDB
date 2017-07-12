@@ -3,15 +3,14 @@
   expose_decorated :skill
   expose_decorated :skills, -> { fetch_skills }
 
-<<<<<<< HEAD
+
   expose :users_skill, -> { UsersSkill.new }
 
 
 
   # POST /skills
   # POST /skills.json
-=======
->>>>>>> a3e6186b9d7265d0d1dfe8bb5e8409f5f6ee21e5
+
   def create
     if skill.save
       redirect_to skill, notice: 'Skill was successfully created.'
