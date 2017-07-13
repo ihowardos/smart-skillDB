@@ -5,9 +5,7 @@ class UsersSkillsController < ApplicationController
 
   def create
     users_skills = UsersSkill.new(users_skill_params)
-    if users_skills.save
-      redirect_to skills_path
-    end
+    users_skills.save
   end
 
   private
