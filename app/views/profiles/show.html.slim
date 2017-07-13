@@ -9,7 +9,10 @@
             small #{user.email}
 
         .photo
-          = image_tag user.photo.url(:thumb)
+          - if user.photo?
+            = image_tag user.photo.url(:thumb)
+          - else
+             = image_tag user.photo.default_url
         br
         .tel
           strong

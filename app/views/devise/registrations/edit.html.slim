@@ -27,6 +27,8 @@
           br
           - if f.object.photo?
             = image_tag f.object.photo.thumb
+          - else
+            = image_tag f.object.photo.default_url
 
         .field
           = f.input :tel, as: :string, input_html: { class:"form-control" }, label: "Telephone"
