@@ -1,7 +1,10 @@
 .skills
  = form_tag skills_path, method: :get
    = text_field_tag :search, params[:search], placeholder: "Search"
+br
+.row
+  .col-md-12
 
- h1 Listing skills
+    = render skills
 
-=render skills
+    = link_to 'New', new_skill_path
