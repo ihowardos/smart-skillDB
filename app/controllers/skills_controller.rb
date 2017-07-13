@@ -4,12 +4,7 @@
   expose_decorated :skills, -> { fetch_skills }
 
 
-  expose :users_skill, -> { UsersSkill.new }
-
-
-
-  # POST /skills
-  # POST /skills.json
+  expose_decorated :user_skill, -> { UserSkill.new }
 
   def create
     if skill.save
@@ -36,7 +31,7 @@
 
     def fetch_skills
       skills = Skill.all
-      skills = skills.where("name ILIKE ?", "%#{params[:search]}%") if params[:search]
+      skills = Skills.where("name ILIKE ?", "%#{params[:search]}%") if params[:search]
       skills
     end
 

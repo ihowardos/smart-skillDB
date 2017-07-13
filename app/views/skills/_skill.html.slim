@@ -1,7 +1,9 @@
-.row
-  .col-md-4.col-md-offset-2
-    .skill-short
-      .name.pull-left
-        = skill.name
-      .level.pull-right   
-        = render "users_skills/form", skill: skill
+.thumbnail
+  .body
+    .row
+      .col-md-6
+        .title
+          h4 = skill.name
+      .col-md-6
+        .level
+          = render "user_skills/form", skill: skill, user: current_user

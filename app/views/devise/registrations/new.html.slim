@@ -19,9 +19,6 @@
         = f.input :date_of_birth, as: :date, start_year: Date.today.year - 60, end_year: Date.today.year - 10, input_html: { class:"form-control" }
 
       .field
-        = f.input :photo, as: :string, input_html: { class:"form-control" }
-
-      .field
         = f.input :tel, as: :string, input_html: { class:"form-control" }, label: "Telephone"
 
       .field
