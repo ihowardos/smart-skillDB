@@ -1,9 +1,9 @@
-= simple_form_for(user_skill) do |f|
+= simple_form_for(user_skill, remote:true) do |f|
   = f.error_notification
 
   .form-inputs
-    = f.association :user, selected: user.id
-    = f.association :skill, selected: skill.id
+    = f.association :user, selected: user.id, input_html:{hidden:true}, label:false
+    = f.association :skill, selected: skill.id, input_html:{hidden:true}, label:false
     = f.input :level, input_html:{class:"form-control", value: 1}, label:false
   br
   .form-actions
