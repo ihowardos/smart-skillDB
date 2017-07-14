@@ -3,11 +3,7 @@ class UserSkillsController < ApplicationController
   expose_decorated :user_skills, -> {fetch_user_skills}
 
   def create
-    if user_skill.save
-      redirect_to user_skill, notice: 'User skill was successfully created.'
-    else
-      redirect_to root_path
-    end
+    user_skill.save
   end
 
 
