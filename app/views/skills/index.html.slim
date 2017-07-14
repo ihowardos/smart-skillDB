@@ -1,6 +1,8 @@
-.skills
- = form_tag skills_path, method: :get
-   = text_field_tag :search, params[:search], placeholder: "Search"
+.row
+  .col-md-2
+    .skills
+     = form_tag skills_path, method: :get
+       = text_field_tag :search, params[:search], placeholder: "Search", class:"form-control"
 br
 .row
   .col-md-12
