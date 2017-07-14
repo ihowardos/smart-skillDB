@@ -1,8 +1,9 @@
-= simple_form_for(skill) do |f|
+= simple_form_for skill do |f|
   = f.error_notification
 
-  .form-inputs
-    = f.input :name
-
   .form-actions
-    = f.button :submit
+    .field
+      = f.input :name, as: :string, input_html: {class:"form-control"}
+    br
+    .form-actions
+      = f.button :submit, class:"btn btn-success"

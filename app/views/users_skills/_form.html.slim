@@ -1,9 +1,0 @@
-= simple_form_for(users_skill, remote: true) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :level
-    = f.hidden_field :user_id, :value => current_user.id
-    = f.hidden_field :skill_id, :value => skill.id
-  .form-actions
-    = f.button :submit

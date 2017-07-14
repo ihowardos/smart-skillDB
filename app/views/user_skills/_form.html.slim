@@ -1,0 +1,10 @@
+= simple_form_for(user_skill) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :user, selected: user.id
+    = f.association :skill, selected: skill.id
+    = f.input :level, input_html:{class:"form-control", value: 1}, label:false
+  br
+  .form-actions
+    = f.button :submit, class:"btn btn-success"

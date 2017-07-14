@@ -1,0 +1,25 @@
+h1 Listing user_skills
+
+table
+  thead
+    tr
+      th User
+      th Skill
+      th Level
+      th
+      th
+      th
+
+  tbody
+    - user_skills.each do |user_skill|
+      tr
+        td = user_skill.user
+        td = user_skill.skill
+        td = user_skill.level
+        td = link_to 'Show', user_skill
+        td = link_to 'Edit', edit_user_skill_path(user_skill)
+        td = link_to 'Destroy', user_skill, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New User skill', new_user_skill_path
