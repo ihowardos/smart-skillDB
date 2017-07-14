@@ -31,7 +31,7 @@
 
     def fetch_skills
       skills = Skill.all
-      skills = Skills.where("name ILIKE ?", "%#{params[:search]}%") if params[:search]
+      skills = Skill.where("name ILIKE ?", "%#{params[:search]}%") if params[:search]
       skills
     end
 
