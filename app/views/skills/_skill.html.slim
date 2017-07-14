@@ -1,9 +1,11 @@
 .thumbnail
   .body
     .row
-      .col-md-6
-        .title
-          h4 = skill.name
-      .col-md-6
-        .level
-          = render "user_skills/form", skill: skill, user: current_user
+      .skill-short data-id=skill.id
+        .col-md-6
+          .title
+            h4 = skill.name
+        .col-md-6
+          .level
+            = render "user_skills/form", skill: skill, user: current_user
+

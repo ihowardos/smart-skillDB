@@ -1,10 +1,13 @@
-.skills
- = form_tag skills_path, method: :get
-   = text_field_tag :search, params[:search], placeholder: "Search"
+p#notice = notice
+.row
+  .col-md-2
+    .skills
+     = form_tag skills_path, method: :get
+       = text_field_tag :search, params[:search], placeholder: "Search", class:"form-control"
 br
 .row
   .col-md-12
 
     = render skills
+    = render 'form'
 
-    = link_to 'New', new_skill_path

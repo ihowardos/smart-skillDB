@@ -8,7 +8,7 @@
 
   def create
     if skill.save
-      redirect_to skill, notice: 'Skill was successfully created.'
+      redirect_to skills_path, notice: "Skill was successfully created"
     else
       render :new
     end
@@ -31,7 +31,7 @@
 
     def fetch_skills
       skills = Skill.all
-      skills = Skills.where("name ILIKE ?", "%#{params[:search]}%") if params[:search]
+      skills = Skill.where("name ILIKE ?", "%#{params[:search]}%") if params[:search]
       skills
     end
 
