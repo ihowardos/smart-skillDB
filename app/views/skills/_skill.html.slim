@@ -1,19 +1,11 @@
-<<<<<<< HEAD
-.row
-  .col-md-4.col-md-offset-2
-    .skill-short data-id=skill.id
-      .name.pull-left
-        = skill.name
-      .level.pull-right   
-        = render "users_skills/form", skill: skill
-=======
 .thumbnail
   .body
     .row
-      .col-md-6
-        .title
-          h4 = skill.name
-      .col-md-6
-        .level
-          = render "user_skills/form", skill: skill, user: current_user
->>>>>>> 8839cbb31f28f681c8f31c57c756b417bf791280
+      .skill-short data-id=skill.id
+        .col-md-6
+          .title
+            h4 = skill.name
+        .col-md-6
+          .level
+            = render "user_skills/form", skill: skill, user: current_user
+
