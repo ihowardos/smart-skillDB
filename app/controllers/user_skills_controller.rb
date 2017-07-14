@@ -14,5 +14,7 @@ class UserSkillsController < ApplicationController
 
     def fetch_user_skills
       user_skills = UserSkill.all
+      user_skills = UserSkill.where('user_id = ?', params[:user_id]) if params[:user_id]
+      user_skills
     end
 end
