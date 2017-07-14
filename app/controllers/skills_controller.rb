@@ -13,7 +13,7 @@
 
   def create
     if skill.save
-      redirect_to skill, notice: 'Skill was successfully created.'
+      redirect_to skills_path
     else
       render :new
     end
