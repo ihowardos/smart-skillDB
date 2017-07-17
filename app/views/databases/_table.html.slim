@@ -1,20 +1,23 @@
 - if params[:list] == 'users'
   .users-table
     .row
-      .col-md-3
-        .search
-          = form_tag databases_path, method: :get
+      .col-md-6
+        = form_tag databases_path, method: :get
+          .col-md-6
             = text_field_tag :user, params[:user], placeholder: "Search user", class:"form-control"
-      .col-md-9.text-right
+            = text_field_tag :list, params[:list], hidden:true
+          .col-md-6
+            = submit_tag 'Search', class:'btn btn-default'
+      .col-md-6.text-right
         | Order by
         '
-        = link_to 'name', databases_path(list: 'users', order_by: 'name')
+        = link_to 'name', databases_path(list: 'users', order_by: 'name', user: params[:user], skill_id: params[:skill_id])
         ' ,
-        = link_to 'surname', databases_path(list: 'users', order_by: 'surname')
+        = link_to 'surname', databases_path(list: 'users', order_by: 'surname', user: params[:user], skill_id: params[:skill_id])
         ' ,
-        = link_to 'email', databases_path(list: 'users', order_by: 'email')
+        = link_to 'email', databases_path(list: 'users', order_by: 'email', user: params[:user], skill_id: params[:skill_id])
         ' ,
-        = link_to 'created at', databases_path(list: 'users', order_by: 'created_at')
+        = link_to 'created at', databases_path(list: 'users', order_by: 'created_at', user: params[:user], skill_id: params[:skill_id])
     br
 
     table.table.table-bordered
@@ -37,17 +40,22 @@
             td = user.created_at
             td = link_to 'Profile', profile_path(user)
 
+
+
 - if params[:list] == 'skills'
   .skills
     .row
-      .col-md-3
-        .search
-          = form_tag databases_path, method: :get
-            = text_field_tag :search, params[:user], placeholder: "Search", class:"form-control"
-      .col-md-9.text-right
+      .col-md-6
+        = form_tag databases_path, method: :get
+          .col-md-6
+            = text_field_tag :skill, params[:skill], placeholder: "Search skill", class:"form-control"
+            = text_field_tag :list, params[:list], hidden:true
+          .col-md-6
+            = submit_tag 'Search', class:'btn btn-default'
+      .col-md-6.text-right
         | Order by
         '
-        = link_to 'name', databases_path(list: 'skills', order_by: 'name')
+        = link_to 'name', databases_path(list: 'skills', order_by: 'name', skill: params[:skill])
     br
 
     table.table.table-bordered
@@ -55,6 +63,7 @@
         tr
           th ID
           th Name
+          th Count of user
           th
 
       tbody
@@ -62,85 +71,5 @@
           tr
             td = skill.id
             td = skill.name
-            td = link_to 'View users'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/ - if params[:skill_id]
-/   .row
-/     .col-md-3
-/       .search
-/         = form_tag databases_path, method: :get
-/           = text_field_tag :search, params[:user], placeholder: "Search", class:"form-control"
-/     .col-md-9.text-right
-/       | Order by
-/       '
-/       = link_to 'level-desc', databases_path(skill_id: params[:skill_id], order_by: 'level-desc')
-/       ' ,
-/       = link_to 'level-asc', databases_path(skill_id: params[:skill_id], order_by: 'level-asc')
-/   br
-/   table.table.table-bordered
-/     thead
-/       tr
-/         th ID
-/         th Name
-/         th Surname
-/         th Email
-/         th Skill
-/         th Level of skill
-/         th
-
-/     tbody
-/       - user_skills.each do |user_skill|
-/         tr
-/           td = link_to user_skill.user.id, profile_path(user_skill.user)
-/           td = user_skill.user.name
-/           td = user_skill.user.surname
-/           td = user_skill.user.email
-/           td = user_skill.skill.name
-/           td = user_skill.level
-/           td = link_to 'Profile', profile_path(user_skill.user)
-
-/ - else
-/   .row
-/     .col-md-3
-/       = form_tag databases_path, method: :get
-/         = text_field_tag :search, params[:search], placeholder: "Search skill", class:"form-control"
-/   br
-/   table.table.table-bordered
-/     thead
-/       tr
-/         th ID
-/         th Skill
-/         th
-/         th
-
-/     tbody
-/       - skills.each do |skill|
-/         tr
-/           td = skill.id
-/           td = skill.skill.name
-/           td = link_to 'View users', databases_path(skill_id: skill.id)
-/           td
-/           td
+            td = skill.users.count
+            td = link_to 'View users', databases_path(list: 'users', skill_id: skill.id)
