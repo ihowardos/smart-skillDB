@@ -1,5 +1,7 @@
   class SkillsController < ApplicationController
 
+  before_action :authenticate_user!
+
   expose_decorated :skill
   expose_decorated :skills, -> { fetch_skills }
 
