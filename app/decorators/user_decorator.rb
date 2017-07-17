@@ -6,4 +6,5 @@ class UserDecorator < ApplicationDecorator
       "Emty"
     end
   end
+
 end

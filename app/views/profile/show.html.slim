@@ -14,9 +14,16 @@
           - else
              = image_tag user.photo.default_url
         br
+        .dob
+          strong
+            | Date of birthday:
+            '
+          = user.date_of_birth
         .tel
           strong
             |  Telephone:
-            ' telel
+            '
+          = user.tel
+
 
 
