@@ -12,7 +12,7 @@
     if skill.save
       redirect_to skills_path, notice: "Skill was successfully created"
     else
-      render :new
+      redirect_to skills_path, notice: "This skill already exists"
     end
   end
 
