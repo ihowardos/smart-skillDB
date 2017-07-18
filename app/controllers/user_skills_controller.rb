@@ -6,6 +6,11 @@ class UserSkillsController < ApplicationController
     user_skill.save
   end
 
+  def destroy
+    user_skill.destroy
+    redirect_to controller: 'user_skills', action: 'index', user_id: current_user.id
+  end
+
 
   private
     def user_skill_params

@@ -1,10 +1,14 @@
-= simple_form_for(user_skill, remote:true) do |f|
+= simple_form_for(user_skill, remote:true, html: { id: "form" }) do |f|
   = f.error_notification
 
   .form-inputs
     = f.association :user, selected: user.id, input_html:{hidden:true}, label:false
     = f.association :skill, selected: skill.id, input_html:{hidden:true}, label:false
-    = f.input :level, input_html:{class:"form-control", value: 1}, label:false
+    = f.hidden_field :level, :value => 10, :id => "level"
+
+    progress id="progressBar" value="50" max="100" 
+
+  
   br
   .form-actions
     = f.button :submit, class:"btn btn-success"
