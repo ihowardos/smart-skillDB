@@ -13,6 +13,14 @@ class UserSkillsController < ApplicationController
     redirect_to controller: 'user_skills', action: 'index', user_id: current_user.id
   end
 
+  def update
+    if user_skill.update(user_skill_params)
+      redirect_to controller: 'user_skills', action: 'index', user_id: current_user.id
+    else
+      render :edit
+    end
+  end
+
 
   private
     def user_skill_params

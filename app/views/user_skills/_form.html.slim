@@ -4,7 +4,7 @@
   .form-inputs
     = f.association :user, selected: user.id, input_html:{hidden:true}, label:false
     = f.association :skill, selected: skill.id, input_html:{hidden:true}, label:false
-    = f.hidden_field :level, :value => 10, :id => "level"
+    = f.hidden_field :level, :value => user_skill.skill, :id => "#{skill.id}level"
 
     - if user_skill.level != nil
         -@variable = user_skill.level
