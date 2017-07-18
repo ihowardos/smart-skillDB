@@ -10,6 +10,7 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   validates :role, inclusion: {in: :role}
+  validates :tel, phone: true 
 
   enum role: {
     user: 'user',
