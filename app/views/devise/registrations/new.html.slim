@@ -1,40 +1,42 @@
-.row
-  .col-md-4.col-md-offset-4
-
-    h2 Sign up
-
+h3 Sgin up
+.thumbnail
+  .row.content
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f|
       = devise_error_messages!
-
-      .field
-        = f.input :email, autofocus: true, as: :email, input_html: { class:"form-control" }
-
-      .field
-        = f.input :name, input_html: { class:"form-control" }
-
-      .field
-        = f.input :surname, input_html: { class:"form-control" }
-
-      .field
-        = f.input :date_of_birth, as: :date, start_year: Date.today.year - 60, end_year: Date.today.year - 10, input_html: { class:"form-control" }
-
-      .field
-        = f.input :tel, as: :string, input_html: { class:"form-control" }, label: "Telephone"
-
-      .field
-        = f.input :password, autocomplete: "off", as: :password, input_html: { class:"form-control" }
-        - if @minimum_password_length
-          em = "#{@minimum_password_length} characters minimum"
-
-      .field
-        = f.input :password_confirmation, autocomplete: "off", as: :password, input_html: { class:"form-control" }
-
-      br
-
-      .actions
-        = f.submit "Sign up", class:"btn btn-success"
-
-    = render "devise/shared/links"
-
+      .row style="padding-top:20px"
+        .col-md-3.col-md-offset-3.col-sm-4.col-xs-offset-1
+          .form-group
+            = f.input :name, input_html: { class:"form-control", id:"name" }
+        .col-md-3.col-md-offset-1.col-sm-4.col-xs-offset-1
+          .form-group
+            = f.input :surname, input_html: { class:"form-control", id:"surname" }
+      .row
+        .col-md-3.col-md-offset-3.col-sm-4.col-xs-offset-1
+          .form-group
+            = f.input :date_of_birth, as: :date, start_year: Date.today.year - 60, end_year: Date.today.year - 10, input_html: { class:"form-control", id:"date" }
+        .col-md-3.col-md-offset-1.col-sm-4.col-xs-offset-1
+          .form-group
+            = f.input :photo, as: :file, input_html: {id:'file' }
+      .row
+        .col-md-3.col-md-offset-3.col-sm-4.col-xs-offset-1
+          .form-group
+            = f.input :email, autofocus: true, as: :email, input_html: { class:"form-control", id:'email' }
+        .col-md-3.col-md-offset-1.col-sm-4.col-xs-offset-1
+          .form-group
+            = f.input :tel, as: :string, input_html: { class:"form-control", id:'phone' }, label: "Telephone"
+      .row
+        .col-md-3.col-md-offset-3.col-sm-4.col-xs-offset-1
+          .form-group
+            = f.input :password, autocomplete: "off", as: :password, input_html: { class:"form-control" }
+            - if @minimum_password_length
+              em = "#{@minimum_password_length} characters minimum"
+        .col-md-3.col-md-offset-1.col-sm-6.col-xs-offset-1
+          .form-group
+            = f.input :password_confirmation, autocomplete: "off", as: :password, input_html: { class:"form-control" }
+      .row style="padding-top:30px"
+        .col-md-2.col-md-offset-4.col-sm-2.col-sm-offset-2.col-xs-2.col-xs-offset-1
+          = f.submit "Sign up", class:"btn btn-primary"
+        .col-md-1.col-sm23.col-xs-2
+          = link_to "Back", new_user_session_path, class:"btn btn-primary"
 
 

@@ -16,27 +16,30 @@ class DatabasesController < ApplicationController
 
     def fetch_skills
       skills = Skill.all
-      skills = Skill.where("name ILIKE ?", "%#{params[:search]}%") if params[:search]
-      skills = Skill.all.order(:name) if params[:order_by] == 'name'
+      skills = Skill.where("name ILIKE ?", "%#{params[:skill]}%") if params[ :skill]
+
+      skills = skills.order(:name) if params[:order_by] == 'name'
       skills
     end
 
     def fetch_users
       users = User.all
-      users = User.where("name OR surname OR email ILIKE ?", "%#{params[:user]}%") if params[:user]
+      users = User.where("name ILIKE ? OR surname ILIKE ? OR email ILIKE ?", "%#{params[:user]}%", "%#{params[:user]}%", "%#{params[:user]}%") if params[:user]
+
 
       if params[:order_by]
         case params[:order_by]
         when 'name'
-          users = User.all.order(:name)
+          users = users.order(:name)
         when 'surname'
-          users = User.all.order(:surname)
-        when 'created at'
-          users = User.all.order(:created_at)
+          users = users.order(:surname)
+        when 'created_at'
+          users = users.order(created_at: :desc)
         when 'email'
-          users = User.all.order(:email)
+          users = users.order(:email)
         end
       end
+      users = users.joins(:user_skills).where("user_skills.skill_id = ?", params[:skill_id]) if params[:skill_id]
       users
     end
 

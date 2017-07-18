@@ -6,8 +6,14 @@ html
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    link href="https://fonts.googleapis.com/css?family=Open+Sans|Cabin|Signika" rel="stylesheet"
+
 
   body
     = render "application/navigation"
     .container
-      = yield
+      .content
+        = yield
+

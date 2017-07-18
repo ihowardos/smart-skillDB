@@ -1,12 +1,7 @@
-.row
-  .col-md-6
-    | Please, choose list:
-    '
-    = link_to 'users', databases_path(list: 'users')
-    '   or
-    = link_to 'skills', databases_path(list: 'skills')
+= render 'list_buttons'
 
 = render 'table'
+
 
 
 

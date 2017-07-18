@@ -1,13 +1,20 @@
 p#notice = notice
-.row
-  .col-md-2
-    .skills
-     = form_tag skills_path, method: :get
-       = text_field_tag :search, params[:search], placeholder: "Search", class:"form-control"
+.skills
+  .row
+    .col-md-6
+      .col-md-6
+         = form_tag skills_path, method: :get
+           = text_field_tag :search, params[:search], placeholder: "Search", class:"form-control"
+      .col-md-6
+            = submit_tag 'Search', class:'btn btn-default'
 br
 .row
   .col-md-12
 
     = render skills
+
+.row
+  .col-md-4
     = render 'form'
+br
 
