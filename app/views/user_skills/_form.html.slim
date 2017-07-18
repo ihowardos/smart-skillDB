@@ -8,3 +8,10 @@
     
     progress id="#{skill.id}" value="50" max="100"  style="width: 300px"
 
+
+    - if request.original_fullpath.to_s[0..11] == "/user_skills"
+        = link_to 'Destroy', user_skill, data: { confirm: 'Are you sure?' }, method: :delete
+
+
+
+

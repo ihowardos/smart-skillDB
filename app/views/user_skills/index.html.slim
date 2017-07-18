@@ -20,7 +20,11 @@
     br
     = link_to 'New skill', skills_path, class:"btn btn-default"
 
+- if current_user.id.to_i == params[:user_id].to_i
+  = render user_skills
+- else
+  h1 Not for you
 
 
-= render user_skills
+
 
