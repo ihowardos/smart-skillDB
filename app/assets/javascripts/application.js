@@ -17,10 +17,10 @@
 //= require_tree .
 
 $(document).ready(function(){
-  var prog = $("#progressBar"); 
+  var prog = $("#progressBar");
   var form =$("#form");
   var level=$("#level");
-  prog.click(function(event){ 
+  prog.click(function(event){
     var x = event.pageX - prog.offset().left
     var xconvert = x/300*100
     var xfinal = xconvert.toFixed(0)
@@ -29,4 +29,4 @@ $(document).ready(function(){
     level.val(xfinal)
     form.submit()
   })
-})
+});

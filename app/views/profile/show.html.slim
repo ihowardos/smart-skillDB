@@ -1,29 +1,23 @@
-.row
-  .col-md-6.col-md-offset-3
-    .panel.panel-default
-      .panel-body
-        .page-header
-          h3
-            | #{user.name} #{user.surname}
-            '
-            small #{user.email}
-
-        .photo
-          - if user.photo?
-            = image_tag user.photo.url(:thumb)
-          - else
-             = image_tag user.photo.default_url
-        br
-        .dob
-          strong
-            | Date of birthday:
-            '
-          = user.date_of_birth
-        .tel
-          strong
-            |  Telephone:
-            '
-          = user.tel
-
-
-
+.thumbnail
+  .row
+    - if user.photo?
+      = image_tag user.photo.url(:thumb)
+    - else
+      = image_tag user.photo.default_url
+  .row style="margin-top:10px"
+    .col-md-6.col-md-offset-3.col-xs-8.col-xs-offset-2
+      label#name-profile style=("padding-right: 3px")
+        = user.name
+      label#surname-profile
+        = user.surname
+      hr color="#bab5b5" noshade="noshade" size="6" /
+  .row
+    label •
+    label#date-profile 07.08.1998
+    label •
+    label#phone-profile 89874032126
+    label •
+  .row
+    label •
+    label#e-mail-profile utibaevaaliia@gmail.com
+    label •
