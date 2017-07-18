@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
   get '/:page', to: 'pages#show', page: 'about', as: :page
 
-  root 'pages#show',   page: 'home'
+  root 'skills#index'
 end
