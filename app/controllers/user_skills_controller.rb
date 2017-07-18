@@ -2,6 +2,8 @@ class UserSkillsController < ApplicationController
   expose_decorated :user_skill
   expose_decorated :user_skills, -> {fetch_user_skills}
 
+  attr_accessor :variable
+
   def create
     user_skill.save
   end
