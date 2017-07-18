@@ -1,4 +1,4 @@
-h1 Listing user_skills
+h1 My skills
 
 table
   thead
@@ -14,7 +14,7 @@ table
     - user_skills.each do |user_skill|
       tr
         td = user_skill.user
-        td = user_skill.skill
+        td = user_skill.skill.name
         td = user_skill.level
         td = link_to 'Show', user_skill
         td = link_to 'Edit', edit_user_skill_path(user_skill)

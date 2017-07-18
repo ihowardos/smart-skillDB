@@ -32,6 +32,8 @@ nav.navbar.navbar-default role="navigation"
                 = link_to "Edit profile", edit_user_registration_path
               li
                 = link_to "My skills", user_skills_path(user_id: current_user.id)
+              li
+                = link_to 'Database', databases_path if current_user.deanery?
               li.divider
               li
                 = link_to "Exit", destroy_user_session_path, method: :delete
