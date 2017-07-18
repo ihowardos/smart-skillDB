@@ -20,7 +20,7 @@
     if skill.update(skill_params)
       redirect_to skill, notice: 'Skill was successfully updated.'
     else
-      render :edit
+      redirect_to skill, notice: 'Error'
     end
   end
 
