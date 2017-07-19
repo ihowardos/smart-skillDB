@@ -5,6 +5,5 @@
     = f.association :user, selected: user.id, input_html:{hidden:true}, label:false
     = f.association :skill, selected: skill.id, input_html:{hidden:true}, label:false
     = f.hidden_field :level, :value => 10, :id => "level"
-    
     progress id="#{skill.id}" value="50" max="100"  style="width: 300px"
 
