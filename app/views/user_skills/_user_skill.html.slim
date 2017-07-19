@@ -1,0 +1,11 @@
+.skill-short
+  .thumbnail
+    .body
+      .row
+        .col-md-6
+          .title
+            h4 = user_skill.skill.name
+        .col-md-6
+          .level
+            = render "form", skill: user_skill.skill, user: current_user, user_skill: user_skill
+

@@ -12,7 +12,7 @@
     if skill.save
       redirect_to skills_path, notice: "Skill was successfully created"
     else
-      render :new
+      redirect_to skills_path, notice: "This skill already exists"
     end
   end
 
@@ -20,7 +20,7 @@
     if skill.update(skill_params)
       redirect_to skill, notice: 'Skill was successfully updated.'
     else
-      render :edit
+      redirect_to skill, notice: 'Error'
     end
   end
 
@@ -33,7 +33,7 @@
 
     def fetch_skills
       skills = Skill.where.not(:id => Skill.select(:id).joins(:users).where("user_id = ?", current_user.id))
-      skills = Skill.where("name ILIKE ?", "%#{params[:search]}%") if params[:search]
+      skills = skills.where("name ILIKE ?", "%#{params[:search]}%") if params[:search]
       skills
     end
 

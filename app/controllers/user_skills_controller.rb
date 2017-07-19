@@ -2,6 +2,8 @@ class UserSkillsController < ApplicationController
   expose_decorated :user_skill
   expose_decorated :user_skills, -> {fetch_user_skills}
 
+  attr_accessor :variable
+
   def create
     user_skill.save
   end
@@ -9,6 +11,14 @@ class UserSkillsController < ApplicationController
   def destroy
     user_skill.destroy
     redirect_to controller: 'user_skills', action: 'index', user_id: current_user.id
+  end
+
+  def update
+    if user_skill.update(user_skill_params)
+      redirect_to controller: 'user_skills', action: 'index', user_id: current_user.id
+    else
+      render :edit
+    end
   end
 
 

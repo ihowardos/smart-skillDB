@@ -13,11 +13,14 @@
       hr color="#bab5b5" noshade="noshade" size="6" /
   .row
     label •
-    label#date-profile 07.08.1998
+    label#date-profile
+      = user.date_of_birth
     label •
-    label#phone-profile 89874032126
+    label#phone-profile
+      = user.tel
     label •
   .row
     label •
-    label#e-mail-profile utibaevaaliia@gmail.com
+    label#e-mail-profile
+      = user.email
     label •

@@ -1,24 +1,14 @@
-.row
-  .col-md-6
-    h1 My skills
-    table
-      thead
-        tr
-          th Skill
-          th Level
-          th
-          th
-          th
+- if current_user.id.to_i == params[:user_id].to_i
+  .row
+    .col-md-6
+      h1 My skills
+    .col-md-6.text-right
+      br
+      = link_to 'New skill', skills_path, class:"btn btn-default"
+  = render user_skills
+- else
+  h1 Not for you
 
-      tbody
-        - user_skills.each do |user_skill|
-          tr
-            td = user_skill.skill.name
-            td = user_skill.level
-            td = link_to 'Destroy', user_skill, data: { confirm: 'Are you sure?' }, method: :delete
-  .col-md-6.text-right
-    br
-    = link_to 'New skill', skills_path, class:"btn btn-default"
 
 
 
