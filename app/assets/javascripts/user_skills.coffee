@@ -4,7 +4,7 @@
 $(document).on 'click', 'progress', (event) ->
     prog = $('#'+@id)
     form = $('#'+@id+'a')
-    level = $('#level')
+    level = $('#'+@id+'level')
     x = event.pageX - (prog.offset().left)
     xconvert = x / 300 * 100
     xfinal = xconvert.toFixed(0)

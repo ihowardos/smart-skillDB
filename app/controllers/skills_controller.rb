@@ -33,7 +33,7 @@
 
     def fetch_skills
       skills = Skill.where.not(:id => Skill.select(:id).joins(:users).where("user_id = ?", current_user.id))
-      skills = Skill.where("name ILIKE ?", "%#{params[:search]}%") if params[:search]
+      skills = skills.where("name ILIKE ?", "%#{params[:search]}%") if params[:search]
       skills
     end
 
